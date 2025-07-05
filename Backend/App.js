@@ -40,7 +40,12 @@ async function main() {
 }
 
 
-const PORT=process.env.PORT || 5000;
-server.listen(PORT,()=>{
-    console.log("app is listening");
-})
+if(process.env.NODE_ENV!=="production"){
+    const PORT=process.env.PORT || 5000;
+    server.listen(PORT,()=>{
+       console.log("app is listening");
+    })
+}
+
+//export server for vercel
+export default server;
